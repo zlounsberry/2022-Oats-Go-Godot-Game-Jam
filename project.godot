@@ -8,10 +8,37 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Plant",
+"language": "GDScript",
+"path": "res://objects/plant_class.gd"
+} ]
+_global_script_class_icons={
+"Plant": ""
+}
+
 [application]
 
 config/name="2022-Oats-GodotJam3"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=640
+window/size/height=360
+window/size/test_width=1280
+window/size/test_height=720
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="pickup"
+2d_physics/layer_5="interaction"
 
 [physics]
 
