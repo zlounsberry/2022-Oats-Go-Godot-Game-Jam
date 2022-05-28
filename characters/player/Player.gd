@@ -1,16 +1,33 @@
 extends KinematicBody2D
 
+onready var animation_array:Array = [
+	[
+		"1bitRun",
+		"1bitJump",
+		"1bitDash",
+	],
+	[
+		"NESRun",
+		"NESJump",
+		"NESDash",
+	],
+	[
+		"SNESRun",
+		"SNESJump",
+		"SNESDash",
+	],
+	[
+		"N64Run",
+		"N64Jump",
+		"N64Dash",
+	]
+]
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	var current_animation_array:Array = animation_array[GlobalSettings.level]
+	print(current_animation_array[0])
+	var run_anim:Node = get_node(str(current_animation_array[0]))
+	var jump_anim:Node = get_node(str(current_animation_array[1]))
+	var dash_anim:Node = get_node(str(current_animation_array[2]))
+	run_anim.visible = true
