@@ -11,7 +11,6 @@ func _ready():
 	sprite_anim.visible = true
 	sprite_anim.play("Run")
 
-
 # A lot of this borrowed from Kenney's platformer pack, slightly modified
 export var movementSpeed = 5
 export var gravityPower = 10
@@ -21,15 +20,11 @@ export var jumpPower = 18
 var velocity = Vector2(0, 0)
 var movementVelocity = Vector2(0, 0)
 var gravity = 1
-
-var frequency = 50
-var amplitude = 1
-
 var doubleJump = true
-var previouslyDestroyed = false
 
 # Methods
 func _physics_process(delta):
+	print(gravity)
 	applyControls()
 	applyGravity()
 	applyAnimation()
@@ -53,7 +48,8 @@ func applyControls():
 
 # Apply gravity and jumping
 func applyGravity():
-	gravity += gravityPower
+	if gravity <= 100:
+		gravity += gravityPower
 	
 func jump(multiplier):
 	gravity = -jumpPower * multiplier * 10
@@ -67,10 +63,3 @@ func applyAnimation():
 		return
 	if not is_on_floor():
 		sprite_anim.play("Jump")
-
-# Consider adding screenshake
-#func shake():
-#	current_camera.shake(0.5, frequency, amplitude)
-#
-#func _on_Node2D_shakebox():
-#	shake()

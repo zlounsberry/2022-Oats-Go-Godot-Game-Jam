@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/1bit.png-e3110b50f35dcc72cc63e2a48b40a748.stex"
+path="res://.import/1bit.png-7b9221eebbe64b20d0c9f07cc70f184c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://objects/moss/1bit.png"
-dest_files=[ "res://.import/1bit.png-e3110b50f35dcc72cc63e2a48b40a748.stex" ]
+source_file="res://objects/plant/1bit.png"
+dest_files=[ "res://.import/1bit.png-7b9221eebbe64b20d0c9f07cc70f184c.stex" ]
 
 [params]
 
