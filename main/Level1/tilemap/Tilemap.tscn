@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://main/Level1/tilemap/Ground1bit.png" type="Texture" id=1]
+[ext_resource path="res://main/Level1/tilemap/Air1bit.png" type="Texture" id=2]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 17, 0, 17 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "Ground1bit.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 17 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 1 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="ConcavePolygonShape2D" id=4]
+segments = PoolVector2Array( 0, 0, 8, 0, 8, 0, 8, 8, 8, 8, 0, 8, 0, 8, 0, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "Air1bit.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 8, 8 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 4 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[node name="1bit" type="Node2D"]
+
+[node name="Ground" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 16, 16 )
+collision_mask = 14
+format = 1
+tile_data = PoolIntArray( 1376256, 0, 0, 1376257, 0, 0, 1376258, 0, 0, 1376259, 0, 0, 1376260, 0, 0, 1376261, 0, 0, 1376262, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0, 1376276, 0, 0, 1376277, 0, 0, 1376278, 0, 0, 1376279, 0, 0, 1376280, 0, 0, 1376281, 0, 0, 1376282, 0, 0, 1376283, 0, 0, 1376284, 0, 0, 1376285, 0, 0, 1376286, 0, 0, 1376287, 0, 0, 1376288, 0, 0, 1376289, 0, 0, 1376290, 0, 0, 1376291, 0, 0, 1376292, 0, 0, 1376293, 0, 0, 1376294, 0, 0, 1376295, 0, 0, 1376296, 0, 0, 1376297, 0, 0, 1376298, 0, 0, 1376299, 0, 0, 1376300, 0, 0, 1376301, 0, 0, 1376302, 0, 0, 1376303, 0, 0, 1376304, 0, 0, 1376305, 0, 0, 1376306, 0, 0, 1376307, 0, 0, 1376308, 0, 0, 1376309, 0, 0, 1376310, 0, 0, 1376311, 0, 0, 1376312, 0, 0, 1376313, 0, 0, 1376314, 0, 0, 1376315, 0, 0, 1376316, 0, 0, 1376317, 0, 0, 1376318, 0, 0, 1376319, 0, 0, 1376320, 0, 0, 1376321, 0, 0, 1376322, 0, 0, 1376323, 0, 0, 1376324, 0, 0, 1376325, 0, 0, 1376326, 0, 0, 1376327, 0, 0, 1376328, 0, 0, 1376329, 0, 0, 1376330, 0, 0, 1376331, 0, 0, 1376332, 0, 0, 1376333, 0, 0, 1376334, 0, 0, 1376335, 0, 0, 1376336, 0, 0, 1376337, 0, 0, 1376338, 0, 0, 1376339, 0, 0, 1376340, 0, 0, 1376341, 0, 0, 1376342, 0, 0, 1376343, 0, 0, 1376344, 0, 0, 1376345, 0, 0, 1376346, 0, 0, 1376347, 0, 0, 1376348, 0, 0, 1376349, 0, 0, 1376350, 0, 0, 1376351, 0, 0, 1376352, 0, 0, 1376353, 0, 0, 1376354, 0, 0, 1376355, 0, 0, 1376356, 0, 0, 1376357, 0, 0, 1376358, 0, 0, 1376359, 0, 0, 1376360, 0, 0, 1376361, 0, 0, 1376362, 0, 0, 1376363, 0, 0, 1376364, 0, 0, 1376365, 0, 0, 1376366, 0, 0, 1376367, 0, 0, 1376368, 0, 0, 1376369, 0, 0, 1376370, 0, 0, 1376371, 0, 0, 1376372, 0, 0, 1376373, 0, 0, 1376374, 0, 0, 1376375, 0, 0 )
+
+[node name="Air" type="TileMap" parent="."]
+tile_set = SubResource( 3 )
+cell_size = Vector2( 8, 8 )
+format = 1
+tile_data = PoolIntArray( 2293800, 0, 0, 2293801, 0, 0, 2293802, 0, 0, 2293803, 0, 0, 2293804, 0, 0, 2293805, 0, 0, 2293806, 0, 0, 2293807, 0, 0, 2490396, 0, 0, 2490397, 0, 0, 2490398, 0, 0, 2490399, 0, 0, 2490400, 0, 0, 2490401, 0, 0, 2490402, 0, 0, 2555919, 0, 0, 2555920, 0, 0, 2555921, 0, 0, 2555922, 0, 0, 2555923, 0, 0, 2555924, 0, 0, 2555925, 0, 0, 2555926, 0, 0, 2555927, 0, 0, 2555928, 0, 0, 2555929, 0, 0 )
