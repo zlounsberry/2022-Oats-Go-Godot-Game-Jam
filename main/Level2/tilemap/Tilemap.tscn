@@ -64,7 +64,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 } ]
 0/z_index = 0
 
-[node name="1bit" type="Node2D"]
+[node name="NES" type="Node2D"]
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource( 2 )

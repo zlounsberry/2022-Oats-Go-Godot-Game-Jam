@@ -1,24 +1,26 @@
-extends Node2D
+extends KinematicBody2D
+
+onready var node_array:Array = ["1bit","NES","SNES","N64"]
+onready var sprite_anim:Node = get_node("Sprite")
+
+onready var gravity:int = 0
+onready var movementVelocity = Vector2.ZERO
+onready var velocity = Vector2.ZERO
+
+signal acorn_hit
 
 func _ready():
-	if GlobalSettings.level == 0:
-		get_node("1Bit").visible = true
-		return
-	if GlobalSettings.level == 1:
-		get_node("NES").visible = true
-		get_node("CollisionShape2D").scale = Vector2(2,2)
-		return
-	if GlobalSettings.level == 2:
-		get_node("SNES").visible = true
-		get_node("CollisionShape2D").scale = Vector2(4,4)
-		return
-	if GlobalSettings.level == 3:
-		get_node("N64").visible = true
-		get_node("CollisionShape2D").scale = Vector2(8,8)
-		return
-	
+	sprite_anim.play(node_array[GlobalSettings.level])
 
+func _physics_process(delta):
+	velocity = velocity.linear_interpolate(movementVelocity * 10, delta * 15)
+	move_and_slide(velocity + Vector2(0, gravity), Vector2(0, -1))
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func drop_acorn():
+	movementVelocity = Vector2(0, 10)
+	gravity = randi() % 8 + 4
+
+func _on_AcornHitbox_acorn_hit():
+	emit_signal("acorn_hit")
+	self.queue_free()
+	print ("acorn hit from acorn script")

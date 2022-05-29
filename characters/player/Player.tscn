@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/1bit_run.png" type="Texture" id=2]
@@ -12,10 +12,11 @@
 [ext_resource path="res://characters/player/Jumping_N64.png" type="Texture" id=10]
 [ext_resource path="res://characters/player/1 bit pickup.ogg" type="AudioStream" id=11]
 [ext_resource path="res://characters/player/1 bit hit.ogg" type="AudioStream" id=12]
+[ext_resource path="res://hitboxes/player/PlayerHitbox.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CapsuleShape2D" id=103]
-radius = 3.0
-height = 0.0
+radius = 2.0
+height = 2.0
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
@@ -394,7 +395,7 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2( -5, -3 )
 shape = SubResource( 103 )
 
@@ -402,6 +403,7 @@ shape = SubResource( 103 )
 position = Vector2( -8, 8 )
 
 [node name="Sprite" type="AnimatedSprite" parent="1bit"]
+visible = false
 position = Vector2( 4, -12 )
 frames = SubResource( 1 )
 animation = "Jump"
@@ -445,6 +447,15 @@ playing = true
 position = Vector2( 65, -35 )
 zoom = Vector2( 0.25, 0.25 )
 
+[node name="Jump" type="AudioStreamPlayer" parent="NES"]
+stream = ExtResource( 4 )
+
+[node name="Pickup" type="AudioStreamPlayer" parent="NES"]
+stream = ExtResource( 11 )
+
+[node name="Hit" type="AudioStreamPlayer" parent="NES"]
+stream = ExtResource( 12 )
+
 [node name="SNES" type="Node2D" parent="."]
 position = Vector2( -8, 8 )
 
@@ -459,6 +470,15 @@ playing = true
 [node name="Camera2D" type="Camera2D" parent="SNES"]
 position = Vector2( 97, -53 )
 zoom = Vector2( 0.35, 0.35 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="SNES"]
+stream = ExtResource( 4 )
+
+[node name="Pickup" type="AudioStreamPlayer" parent="SNES"]
+stream = ExtResource( 11 )
+
+[node name="Hit" type="AudioStreamPlayer" parent="SNES"]
+stream = ExtResource( 12 )
 
 [node name="N64" type="Node2D" parent="."]
 position = Vector2( -8, 8 )
@@ -475,3 +495,6 @@ position = Vector2( 213, -76 )
 zoom = Vector2( 0.8, 0.8 )
 
 [node name="Sound" type="Node2D" parent="."]
+
+[node name="PlayerHitbox" parent="." instance=ExtResource( 13 )]
+position = Vector2( -4, -4 )

@@ -3,7 +3,7 @@
 [ext_resource path="res://main/Level1/background/Background.gd" type="Script" id=1]
 [ext_resource path="res://main/Level1/background/Background.png" type="Texture" id=2]
 
-[node name="Background" type="ParallaxBackground"]
+[node name="Background_Level1" type="ParallaxBackground"]
 script = ExtResource( 1 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
