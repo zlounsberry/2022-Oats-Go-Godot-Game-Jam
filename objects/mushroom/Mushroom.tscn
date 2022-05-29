@@ -16,12 +16,12 @@ region = Rect2( 6, 0, 6, 6 )
 animations = [ {
 "frames": [  ],
 "loop": true,
-"name": "NES",
+"name": "SNES",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "SNES",
+"name": "NES",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -51,7 +51,9 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 0, 2 )
+position = Vector2( 0, 2.25 )
 shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="plant_picked_up" from="PlantHitbox" to="." method="_on_PlantHitbox_plant_picked_up"]

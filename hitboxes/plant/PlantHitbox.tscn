@@ -4,7 +4,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
-height = 4.0
+height = 0.0
 
 [node name="PlantHitbox" type="Area2D"]
 collision_layer = 8

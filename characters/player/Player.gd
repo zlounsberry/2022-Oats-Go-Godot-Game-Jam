@@ -4,6 +4,9 @@ onready var node_array:Array = ["1bit","NES","SNES","N64"]
 onready var current_node_array:String = node_array[GlobalSettings.level]
 onready var sprite_anim:Node = get_node(str(current_node_array, "/Sprite"))
 onready var current_camera:Node = get_node(str(current_node_array, "/Camera2D"))
+onready var current_jump_sound:Node = get_node(str(current_node_array, "/Jump"))
+onready var current_pickup_sound:Node = get_node(str(current_node_array, "/Pickup"))
+onready var current_hit_sound:Node = get_node(str(current_node_array, "/Hit"))
 
 
 func _ready():
@@ -24,7 +27,6 @@ var doubleJump = true
 
 # Methods
 func _physics_process(delta):
-	print(gravity)
 	applyControls()
 	applyGravity()
 	applyAnimation()
@@ -42,9 +44,11 @@ func applyControls():
 		if is_on_floor():
 			jump(1)
 			doubleJump = true
+			current_jump_sound.play()
 		elif doubleJump:
 			jump(1)
 			doubleJump = false
+			current_jump_sound.play()
 
 # Apply gravity and jumping
 func applyGravity():
@@ -63,3 +67,9 @@ func applyAnimation():
 		return
 	if not is_on_floor():
 		sprite_anim.play("Jump")
+
+func play_pickup_sound():
+	current_pickup_sound.play()
+
+func play_hit_sound():
+	current_hit_sound.play()

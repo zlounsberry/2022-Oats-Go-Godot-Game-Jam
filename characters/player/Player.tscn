@@ -1,14 +1,17 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/1bit_run.png" type="Texture" id=2]
 [ext_resource path="res://characters/player/1bit_jump.png" type="Texture" id=3]
+[ext_resource path="res://characters/player/1 bit jump.ogg" type="AudioStream" id=4]
 [ext_resource path="res://characters/player/Running_NES.png" type="Texture" id=5]
 [ext_resource path="res://characters/player/Jumping_NES.png" type="Texture" id=6]
 [ext_resource path="res://characters/player/Jumping_SNES.png" type="Texture" id=7]
 [ext_resource path="res://characters/player/Running_SNES.png" type="Texture" id=8]
 [ext_resource path="res://characters/player/Running_N64.png" type="Texture" id=9]
 [ext_resource path="res://characters/player/Jumping_N64.png" type="Texture" id=10]
+[ext_resource path="res://characters/player/1 bit pickup.ogg" type="AudioStream" id=11]
+[ext_resource path="res://characters/player/1 bit hit.ogg" type="AudioStream" id=12]
 
 [sub_resource type="CapsuleShape2D" id=103]
 radius = 3.0
@@ -418,6 +421,15 @@ margin_top = -78.0
 margin_right = 145.0
 margin_bottom = 12.0
 
+[node name="Jump" type="AudioStreamPlayer" parent="1bit"]
+stream = ExtResource( 4 )
+
+[node name="Pickup" type="AudioStreamPlayer" parent="1bit"]
+stream = ExtResource( 11 )
+
+[node name="Hit" type="AudioStreamPlayer" parent="1bit"]
+stream = ExtResource( 12 )
+
 [node name="NES" type="Node2D" parent="."]
 position = Vector2( -8, 8 )
 
@@ -461,3 +473,5 @@ frame = 13
 [node name="Camera2D" type="Camera2D" parent="N64"]
 position = Vector2( 213, -76 )
 zoom = Vector2( 0.8, 0.8 )
+
+[node name="Sound" type="Node2D" parent="."]
