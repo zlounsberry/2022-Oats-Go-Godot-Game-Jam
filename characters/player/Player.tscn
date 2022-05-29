@@ -11,8 +11,8 @@
 [ext_resource path="res://characters/player/Jumping_N64.png" type="Texture" id=10]
 
 [sub_resource type="CapsuleShape2D" id=103]
-radius = 2.0
-height = 4.0
+radius = 3.0
+height = 0.0
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
@@ -399,7 +399,6 @@ shape = SubResource( 103 )
 position = Vector2( -8, 8 )
 
 [node name="Sprite" type="AnimatedSprite" parent="1bit"]
-visible = false
 position = Vector2( 4, -12 )
 frames = SubResource( 1 )
 animation = "Jump"

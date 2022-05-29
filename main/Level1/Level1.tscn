@@ -13,4 +13,10 @@ script = ExtResource( 1 )
 [node name="1bit" parent="." instance=ExtResource( 3 )]
 
 [node name="Mushroom" parent="." instance=ExtResource( 5 )]
-position = Vector2( 135, 290 )
+position = Vector2( 103, 94 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -35.0
+margin_top = 153.0
+margin_right = -17.0
+margin_bottom = 353.0
