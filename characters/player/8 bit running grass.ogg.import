@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/8 bit running grass.ogg-5b76741a936c328322777a9a2a086ef0.oggstr"
+
+[deps]
+
+source_file="res://characters/player/8 bit running grass.ogg"
+dest_files=[ "res://.import/8 bit running grass.ogg-5b76741a936c328322777a9a2a086ef0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

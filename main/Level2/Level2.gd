@@ -1,8 +1,5 @@
 extends Level
 
-onready var Player:Object = load("res://characters/player/Player.tscn")
-onready var player = Player.instance()
-
 onready var Acorn:Object = load("res://characters/acorn/Acorn.tscn")
 onready var AcornSpawnHitbox:Object = load("res://hitboxes/spawn_acorn/SpawnAcornHitbox.tscn")
 
@@ -18,7 +15,7 @@ func _ready():
 	]:
 		print(array_muliplier_values)
 		spawn_mushrooms(player, Mushroom, array_muliplier_values[0], array_muliplier_values[1])
-		spawn_plants(player, Plant,array_muliplier_values[0], array_muliplier_values[1])
+		spawn_plants(player, Plant, array_muliplier_values[0], array_muliplier_values[1])
 	create_acorn_spawn_sites(AcornSpawnHitbox, Acorn, max_x_position)
 
 func _spawn_player():

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Background.png-f76045d23ea2570afdea2e609cc8dc55.stex"
+path="res://.import/SNES.png-f990247e025461cb6a64b898650d5902.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main/Level2/background/Background.png"
-dest_files=[ "res://.import/Background.png-f76045d23ea2570afdea2e609cc8dc55.stex" ]
+source_file="res://objects/mushroom/SNES.png"
+dest_files=[ "res://.import/SNES.png-f990247e025461cb6a64b898650d5902.stex" ]
 
 [params]
 

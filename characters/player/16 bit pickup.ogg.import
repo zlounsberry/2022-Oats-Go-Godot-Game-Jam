@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/16 bit pickup.ogg-79d47a27211a909aabd78de5222466f1.oggstr"
+
+[deps]
+
+source_file="res://characters/player/16 bit pickup.ogg"
+dest_files=[ "res://.import/16 bit pickup.ogg-79d47a27211a909aabd78de5222466f1.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

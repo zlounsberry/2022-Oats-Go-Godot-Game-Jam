@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/8 bit running concrete.ogg-2cf5b74319125a1d5e6c5d9910de9933.oggstr"
+
+[deps]
+
+source_file="res://characters/player/8 bit running concrete.ogg"
+dest_files=[ "res://.import/8 bit running concrete.ogg-2cf5b74319125a1d5e6c5d9910de9933.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

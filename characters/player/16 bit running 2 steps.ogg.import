@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/16 bit running 2 steps.ogg-879fb2bea22353aa102c6bf661b19589.oggstr"
+
+[deps]
+
+source_file="res://characters/player/16 bit running 2 steps.ogg"
+dest_files=[ "res://.import/16 bit running 2 steps.ogg-879fb2bea22353aa102c6bf661b19589.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

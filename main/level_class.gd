@@ -1,6 +1,10 @@
 extends Node2D
 class_name Level
 
+onready var Player:Object = load("res://characters/player/Player.tscn")
+# Borrowing this for sound lol
+onready var player = Player.instance()
+
 onready var mushroom_array:Array = []
 onready var plant_array:Array = []
 onready var acorn_spawn_array:Array = []
@@ -40,7 +44,7 @@ func spawn_mushrooms(Player:Object, Mushroom:Object, min_x_position:int, max_x_p
 		if not mushroom_array.has(mushroom_position):
 			var mushroom = Mushroom.instance()
 			mushroom.position = mushroom_position
-			mushroom.connect("picked_up", self, "play_player_pickup_sound")
+			mushroom.connect("picked_up", self, "play_player_pickup_sound", [Player])
 			self.add_child(mushroom)
 			mushroom_array.append(mushroom_position)
 	for low_mushrooms in range(1, 1):
@@ -49,7 +53,7 @@ func spawn_mushrooms(Player:Object, Mushroom:Object, min_x_position:int, max_x_p
 		if not mushroom_array.has(mushroom_position):
 			var mushroom = Mushroom.instance()
 			mushroom.position = mushroom_position
-			mushroom.connect("picked_up", self, "play_player_pickup_sound")
+			mushroom.connect("picked_up", self, "play_player_pickup_sound", [Player])
 			self.add_child(mushroom)
 			plant_array.append(mushroom_position)
 
@@ -60,7 +64,7 @@ func spawn_plants(Player:Object, Plant:Object, min_x_position:int, max_x_positio
 		if not plant_array.has(plant_position):
 			var plant = Plant.instance()
 			plant.position = plant_position
-			plant.connect("picked_up", self, "play_player_pickup_sound")
+			plant.connect("picked_up", self, "play_player_pickup_sound", [Player])
 			self.add_child(plant)
 			plant_array.append(plant_position)
 	for low_plants in range(1, 2):
@@ -69,7 +73,7 @@ func spawn_plants(Player:Object, Plant:Object, min_x_position:int, max_x_positio
 		if not plant_array.has(plant_position):
 			var plant = Plant.instance()
 			plant.position = plant_position
-			plant.connect("picked_up", self, "play_player_pickup_sound")
+			plant.connect("picked_up", self, "play_player_pickup_sound", [Player])
 			self.add_child(plant)
 			plant_array.append(plant_position)
 
@@ -80,6 +84,7 @@ func create_acorn_spawn_sites(Acorn_spawn_hitbox:Object, Acorn:Object, max_x_pos
 		if not acorn_spawn_array.has(spawn_point_position):
 			var acorn = Acorn.instance()
 			acorn.position = Vector2(spawn_point_position.x + (randi() % 125 + 75), 0)
+			acorn.connect("acorn_hit", self, "player_hit", [player])
 			self.add_child(acorn)
 			var acorn_spawn = Acorn_spawn_hitbox.instance()
 			acorn_spawn.position = spawn_point_position

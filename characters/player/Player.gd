@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
 onready var node_array:Array = ["1bit","NES","SNES","N64"]
-onready var current_node_array:String = node_array[GlobalSettings.level]
-onready var sprite_anim:Node = get_node(str(current_node_array, "/Sprite"))
-onready var current_camera:Node = get_node(str(current_node_array, "/Camera2D"))
-onready var current_jump_sound:Node = get_node(str(current_node_array, "/Jump"))
-onready var current_pickup_sound:Node = get_node(str(current_node_array, "/Pickup"))
-onready var current_hit_sound:Node = get_node(str(current_node_array, "/Hit"))
+onready var current_node:String = node_array[GlobalSettings.level]
+onready var sprite_anim:Node = get_node(str(current_node, "/Sprite"))
+onready var current_camera:Node = get_node(str(current_node, "/Camera2D"))
+onready var current_jump_sound:Node = get_node(str(current_node, "/Jump"))
+onready var current_pickup_sound:Node = get_node(str(current_node, "/Pickup"))
+onready var current_hit_sound:Node = get_node(str(current_node, "/Hit"))
 
 
 func _ready():
@@ -43,10 +43,12 @@ func applyControls():
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			jump(1)
+			current_jump_sound.pitch_scale = 1
 			doubleJump = true
 			current_jump_sound.play()
 		elif doubleJump:
 			jump(1)
+			current_jump_sound.pitch_scale = 1.35
 			doubleJump = false
 			current_jump_sound.play()
 
@@ -69,7 +71,9 @@ func applyAnimation():
 		sprite_anim.play("Jump")
 
 func play_pickup_sound():
+	print("playing pickup sound")
 	current_pickup_sound.play()
 
 func play_hit_sound():
+	print("playing hit sound")
 	current_hit_sound.play()

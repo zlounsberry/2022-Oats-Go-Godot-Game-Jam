@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/debug_32bit.png-04e8236245868f0e271f7c0c04842f92.stex"
+path="res://.import/SNES.png-1eebe744e9841bc385434d322e9c577b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/acorn/debug_32bit.png"
-dest_files=[ "res://.import/debug_32bit.png-04e8236245868f0e271f7c0c04842f92.stex" ]
+source_file="res://characters/acorn/SNES.png"
+dest_files=[ "res://.import/SNES.png-1eebe744e9841bc385434d322e9c577b.stex" ]
 
 [params]
 

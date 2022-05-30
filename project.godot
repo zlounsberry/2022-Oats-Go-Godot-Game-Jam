@@ -73,6 +73,11 @@ _global_script_classes=[ {
 "class": "Level",
 "language": "GDScript",
 "path": "res://main/level_class.gd"
+}, {
+"base": "Control",
+"class": "OnScreenUI",
+"language": "GDScript",
+"path": "res://ui/on_screen_ui/on_screen_ui.gd"
 } ]
 _global_script_class_icons={
 "Consumable": "",
@@ -87,7 +92,8 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "HistoryRow": "",
-"Level": ""
+"Level": "",
+"OnScreenUI": ""
 }
 
 [application]

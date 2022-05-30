@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=2]
+
+[ext_resource path="res://fonts/montreal/Montreal.tres" type="DynamicFont" id=1]
+
+[resource]
+default_font = ExtResource( 1 )
+Label/colors/font_color = Color( 0.462745, 0.466667, 0.113725, 1 )
+Label/fonts/font = null
