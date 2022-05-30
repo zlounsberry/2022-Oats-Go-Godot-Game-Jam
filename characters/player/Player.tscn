@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=2]
+[gd_scene load_steps=107 format=2]
 
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/1bit_run.png" type="Texture" id=2]
@@ -19,7 +19,8 @@
 [ext_resource path="res://characters/player/16 bit hit.ogg" type="AudioStream" id=17]
 [ext_resource path="res://characters/player/16 bit pickup.ogg" type="AudioStream" id=18]
 [ext_resource path="res://characters/player/16 bit jump.ogg" type="AudioStream" id=19]
-[ext_resource path="res://ui/on_screen_ui/OnScreenUI.tscn" type="PackedScene" id=20]
+[ext_resource path="res://ui/on_screen_ui/1bitOnScreenUI.tscn" type="PackedScene" id=20]
+[ext_resource path="res://ui/on_screen_ui/NESOnScreenUI.tscn" type="PackedScene" id=21]
 
 [sub_resource type="CapsuleShape2D" id=103]
 radius = 2.0
@@ -439,6 +440,13 @@ stream = ExtResource( 11 )
 [node name="Hit" type="AudioStreamPlayer" parent="1bit"]
 stream = ExtResource( 12 )
 
+[node name="UI" parent="1bit" instance=ExtResource( 20 )]
+visible = false
+margin_left = -14.0
+margin_top = -97.0
+margin_right = -14.0
+margin_bottom = -97.0
+
 [node name="NES" type="Node2D" parent="."]
 position = Vector2( -8, 8 )
 
@@ -462,6 +470,13 @@ stream = ExtResource( 14 )
 
 [node name="Hit" type="AudioStreamPlayer" parent="NES"]
 stream = ExtResource( 15 )
+
+[node name="UI" parent="NES" instance=ExtResource( 21 )]
+visible = false
+margin_left = -14.0
+margin_top = -150.0
+margin_right = -14.0
+margin_bottom = -150.0
 
 [node name="SNES" type="Node2D" parent="."]
 position = Vector2( -8, 8 )
@@ -488,6 +503,13 @@ stream = ExtResource( 18 )
 [node name="Hit" type="AudioStreamPlayer" parent="SNES"]
 stream = ExtResource( 17 )
 
+[node name="UI" parent="SNES" instance=ExtResource( 21 )]
+visible = false
+margin_left = -14.0
+margin_top = -151.0
+margin_right = -14.0
+margin_bottom = -151.0
+
 [node name="N64" type="Node2D" parent="."]
 position = Vector2( -8, 8 )
 
@@ -505,8 +527,8 @@ zoom = Vector2( 0.8, 0.8 )
 [node name="PlayerHitbox" parent="." instance=ExtResource( 13 )]
 position = Vector2( -4, -4 )
 
-[node name="Control" parent="." instance=ExtResource( 20 )]
-margin_left = -22.0
-margin_top = -89.0
-margin_right = -22.0
-margin_bottom = -89.0
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -24.0
+margin_top = -162.0
+margin_right = 262.0
+margin_bottom = -152.0

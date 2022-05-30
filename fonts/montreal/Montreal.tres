@@ -1,8 +1,9 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://fonts/montreal/Montreal-Regular.ttf" type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://fonts/montreal/Montreal-Regular.ttf"
 
 [resource]
-size = 12
-use_filter = true
-font_data = ExtResource( 1 )
+size = 6
+font_data = SubResource( 1 )

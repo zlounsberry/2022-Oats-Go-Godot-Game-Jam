@@ -1,8 +1,5 @@
 extends Level
 
-onready var Player:Object = load("res://characters/player/Player.tscn")
-onready var player = Player.instance()
-
 onready var Acorn:Object = load("res://characters/acorn/Acorn.tscn")
 onready var AcornSpawnHitbox:Object = load("res://hitboxes/spawn_acorn/SpawnAcornHitbox.tscn")
 
