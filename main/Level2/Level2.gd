@@ -13,7 +13,6 @@ func _ready():
 		[max_x_position * 0.333, max_x_position * 0.666],
 		[max_x_position * 0.666, max_x_position]
 	]:
-		print(array_muliplier_values)
 		spawn_mushrooms(player, Mushroom, array_muliplier_values[0], array_muliplier_values[1])
 		spawn_plants(player, Plant, array_muliplier_values[0], array_muliplier_values[1])
 	create_acorn_spawn_sites(AcornSpawnHitbox, Acorn, max_x_position)

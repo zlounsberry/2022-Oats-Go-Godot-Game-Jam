@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main/Level2/background/Background.gd" type="Script" id=1]
+
+[node name="NES" type="ParallaxBackground"]
+script = ExtResource( 1 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]

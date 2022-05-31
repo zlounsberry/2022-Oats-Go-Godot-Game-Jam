@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 onready var node_array:Array = ["1bit","NES","SNES","N64"]
-onready var move_speed_array:Array = [0, 1, 1, 3]
+onready var move_speed_array:Array = [0, 1, 1, 2]
 onready var current_node:String = node_array[GlobalSettings.level]
 onready var sprite_anim:Node = get_node(str(current_node, "/Sprite"))
 onready var current_camera:Node = get_node(str(current_node, "/Camera2D"))
@@ -11,6 +11,7 @@ onready var current_hit_sound:Node = get_node(str(current_node, "/Hit"))
 onready var current_UI:Node = get_node(str(current_node, "/UI"))
 onready var movement_speed:int = 5 * (move_speed_array[GlobalSettings.level] + 1)
 onready var base_move_speed:int = movement_speed
+onready var can_dash:bool = true
 
 func _ready():
 	current_camera.current = true
@@ -55,9 +56,9 @@ func applyControls():
 			doubleJump = false
 			current_jump_sound.play()
 
-	if Input.is_action_just_pressed("dash"):
-		if is_on_floor():
-			movementVelocity.x = movement_speed * 5
+	if Input.is_action_just_pressed("dash") and GlobalSettings.mushroom_counter > 0:
+#		if is_on_floor():
+		dash(30)
 
 # Apply gravity and jumping
 func applyGravity():
@@ -70,7 +71,16 @@ func jump(multiplier):
 
 func dash(multiplier):
 	# Make this satisfying, just fast for now
-	return_to_base_speed()
+	can_dash = false
+	print("dashing")
+	movementVelocity.x = base_move_speed * multiplier
+	GlobalSettings.mushroom_counter -= 1
+	var timer = Timer.new()
+	timer.set_wait_time(1)
+	timer.one_shot = true
+	timer.connect("timeout", self, "return_to_base_speed")
+	add_child(timer)
+	timer.start()
 
 # Set animations
 func applyAnimation():
@@ -82,12 +92,11 @@ func applyAnimation():
 		sprite_anim.play("Jump")
 
 func play_pickup_sound():
-	print("playing pickup sound")
 	current_pickup_sound.play()
 
 func play_hit_sound():
-	print("playing hit sound")
 	current_hit_sound.play()
 
 func return_to_base_speed():
-	print(movement_speed)
+	movementVelocity.x = base_move_speed
+	can_dash = true
