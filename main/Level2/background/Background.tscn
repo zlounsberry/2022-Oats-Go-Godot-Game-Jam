@@ -11,7 +11,7 @@ motion_mirroring = Vector2( 320, 0 )
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxLayer"]
 modulate = Color( 0.12549, 0.403922, 0.654902, 1 )
-margin_top = -96.0
+margin_top = -262.0
 margin_right = 320.0
 margin_bottom = 4.0
 

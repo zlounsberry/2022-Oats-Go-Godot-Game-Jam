@@ -3,7 +3,11 @@ class_name Level
 
 onready var Player:Object = load("res://characters/player/Player.tscn")
 # Borrowing this for sound lol
-onready var player = Player.instance()
+onready var player:Object = Player.instance()
+onready var current_plant_count:int = GlobalSettings.plant_counter
+onready var current_mushroom_count:int = GlobalSettings.mushroom_counter
+
+onready var animationplayer:Node = get_node("AnimationPlayer")
 
 onready var mushroom_array:Array = []
 onready var plant_array:Array = []
@@ -36,6 +40,10 @@ onready var position_array:Array =	[
 onready var max_x_position:int = position_array[GlobalSettings.level][0]
 onready var high_y_position:int = position_array[GlobalSettings.level][1]
 onready var low_y_position:int = position_array[GlobalSettings.level][2]
+
+func _ready():
+	# todo change to 5
+	GlobalSettings.hit_points = 5
 
 func spawn_mushrooms(Player:Object, Mushroom:Object, min_x_position:int, max_x_position:int):
 	for high_mushrooms in range(1, 4):
@@ -99,4 +107,12 @@ func player_hit(player:Object):
 	player.play_hit_sound()
 	GlobalSettings.hit_points -= 1
 	if GlobalSettings.hit_points <=0:
-		print("lol rekt")
+		restart_level(player)
+		
+func restart_level(player:Object):
+	player.has_health = false
+	animationplayer.play("FadeOut")
+	yield(animationplayer, "animation_finished")
+	GlobalSettings.plant_counter = current_plant_count
+	GlobalSettings.mushroom_counter = current_mushroom_count
+	get_tree().reload_current_scene()

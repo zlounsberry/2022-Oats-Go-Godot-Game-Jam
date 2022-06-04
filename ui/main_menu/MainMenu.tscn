@@ -94,7 +94,7 @@ margin_bottom = 41.0
 theme = ExtResource( 3 )
 text = "Get foraging"
 
-[node name="Options" type="Button" parent="HBoxContainer"]
+[node name="Settings" type="Button" parent="HBoxContainer"]
 margin_left = 182.0
 margin_right = 414.0
 margin_bottom = 41.0
@@ -123,6 +123,8 @@ anims/FadeBlack = SubResource( 3 )
 anims/FadeOut = SubResource( 5 )
 anims/RESET = SubResource( 4 )
 
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="pressed" from="HBoxContainer/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="HBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="HBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]

@@ -18,5 +18,7 @@ func _ready():
 	create_acorn_spawn_sites(AcornSpawnHitbox, Acorn, max_x_position)
 
 func _spawn_player():
+	animationplayer.play("FadeIn")
+	yield(animationplayer, "animation_finished")
 	player.position = Vector2(0, low_y_position)
 	self.add_child(player)

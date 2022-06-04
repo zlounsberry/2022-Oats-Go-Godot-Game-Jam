@@ -4,7 +4,7 @@ onready var node_array:Array = ["1bit","NES","SNES","N64"]
 onready var sprite_anim:Node = get_node("Sprite")
 
 onready var gravity:int = 0
-onready var movementVelocity = Vector2.ZERO
+onready var movement_velocity = Vector2.ZERO
 onready var velocity = Vector2.ZERO
 
 signal acorn_hit
@@ -13,11 +13,11 @@ func _ready():
 	sprite_anim.play(node_array[GlobalSettings.level])
 
 func _physics_process(delta):
-	velocity = velocity.linear_interpolate(movementVelocity * 10, delta * 15)
+	velocity = velocity.linear_interpolate(movement_velocity * 10, delta * 15)
 	move_and_slide(velocity + Vector2(0, gravity), Vector2(0, -1))
 
 func drop_acorn():
-	movementVelocity = Vector2(0, 10)
+	movement_velocity = Vector2(0, 10)
 	gravity = randi() % 8 + 4
 
 func _on_AcornHitbox_acorn_hit():

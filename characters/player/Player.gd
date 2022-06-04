@@ -2,6 +2,9 @@ extends KinematicBody2D
 
 onready var node_array:Array = ["1bit","NES","SNES","N64"]
 onready var move_speed_array:Array = [0, 1, 1, 2]
+onready var jump_multiplier_array:Array = [18, 24, 24, 32]
+onready var jump_power = jump_multiplier_array[GlobalSettings.level]
+
 onready var current_node:String = node_array[GlobalSettings.level]
 onready var sprite_anim:Node = get_node(str(current_node, "/Sprite"))
 onready var current_camera:Node = get_node(str(current_node, "/Camera2D"))
@@ -12,6 +15,7 @@ onready var current_UI:Node = get_node(str(current_node, "/UI"))
 onready var movement_speed:int = 5 * (move_speed_array[GlobalSettings.level] + 1)
 onready var base_move_speed:int = movement_speed
 onready var can_dash:bool = true
+onready var has_health = true
 
 func _ready():
 	current_camera.current = true
@@ -21,28 +25,27 @@ func _ready():
 
 # A lot of this borrowed from Kenney's platformer pack, slightly modified
 export var gravityPower = 10
-export var jumpPower = 18
-
 # Private
 var velocity = Vector2(0, 0)
-var movementVelocity = Vector2(0, 0)
+var movement_velocity = Vector2(0, 0)
 var gravity = 1
 var doubleJump = true
 
 # Methods
 func _physics_process(delta):
-	applyControls()
-	applyGravity()
-	applyAnimation()
+	if has_health:
+		applyControls()
+		applyGravity()
+		applyAnimation()
 
-	# Apply movement
-	velocity = velocity.linear_interpolate(movementVelocity * 10, delta * 15)
-	move_and_slide(velocity + Vector2(0, gravity), Vector2(0, -1))
+		# Apply movement
+		velocity = velocity.linear_interpolate(movement_velocity * 10, delta * 15)
+		move_and_slide(velocity + Vector2(0, gravity), Vector2(0, -1))
 
 # Player controls
 func applyControls():
-	movementVelocity = Vector2(0, 0)
-	movementVelocity.x = movement_speed
+	movement_velocity = Vector2(0, 0)
+	movement_velocity.x = movement_speed
 
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
@@ -66,14 +69,14 @@ func applyGravity():
 		gravity += gravityPower
 	
 func jump(multiplier):
-	gravity = -jumpPower * multiplier * 10
+	gravity = -jump_power * multiplier * 10
 	sprite_anim.play("Jump")
 
 func dash(multiplier):
 	# Make this satisfying, just fast for now
 	can_dash = false
 	print("dashing")
-	movementVelocity.x = base_move_speed * multiplier
+	movement_velocity.x = base_move_speed * multiplier
 	GlobalSettings.mushroom_counter -= 1
 	var timer = Timer.new()
 	timer.set_wait_time(1)
@@ -98,5 +101,5 @@ func play_hit_sound():
 	current_hit_sound.play()
 
 func return_to_base_speed():
-	movementVelocity.x = base_move_speed
+	movement_velocity.x = base_move_speed
 	can_dash = true
