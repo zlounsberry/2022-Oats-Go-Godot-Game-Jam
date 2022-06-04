@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://fonts/montreal/Montreal.tres" type="DynamicFont" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://fonts/montreal/Montreal-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = SubResource( 1 )
+
+[resource]
+default_font = ExtResource( 1 )
+Label/colors/font_color = Color( 0.6, 0.878431, 0.658824, 1 )
+Label/constants/line_spacing = 1
+Label/fonts/font = SubResource( 2 )

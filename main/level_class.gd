@@ -93,7 +93,7 @@ func create_acorn_spawn_sites(Acorn_spawn_hitbox:Object, Acorn:Object, max_x_pos
 			acorn_spawn_array.append(spawn_point_position)
 
 func play_player_pickup_sound(player:Object):
-	player.play_pickup_sound()
+	player.play_pickup_sound() 
 
 func player_hit(player:Object):
 	player.play_hit_sound()

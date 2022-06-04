@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=2]
+[gd_scene load_steps=110 format=2]
 
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/1bit_run.png" type="Texture" id=2]
@@ -21,6 +21,9 @@
 [ext_resource path="res://characters/player/16 bit jump.ogg" type="AudioStream" id=19]
 [ext_resource path="res://ui/on_screen_ui/1bitOnScreenUI.tscn" type="PackedScene" id=20]
 [ext_resource path="res://ui/on_screen_ui/NESOnScreenUI.tscn" type="PackedScene" id=21]
+[ext_resource path="res://characters/player/64 bit hit.ogg" type="AudioStream" id=22]
+[ext_resource path="res://characters/player/64 bit jump.ogg" type="AudioStream" id=23]
+[ext_resource path="res://characters/player/64 bit pickup.ogg" type="AudioStream" id=24]
 
 [sub_resource type="CapsuleShape2D" id=103]
 radius = 2.0
@@ -419,8 +422,8 @@ frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="1bit"]
-position = Vector2( 81, -32 )
-zoom = Vector2( 0.3, 0.3 )
+position = Vector2( 73, -32 )
+zoom = Vector2( 0.25, 0.25 )
 
 [node name="ColorRect" type="ColorRect" parent="1bit"]
 visible = false
@@ -441,7 +444,6 @@ stream = ExtResource( 11 )
 stream = ExtResource( 12 )
 
 [node name="UI" parent="1bit" instance=ExtResource( 20 )]
-visible = false
 margin_left = -14.0
 margin_top = -85.0
 margin_right = -14.0
@@ -460,7 +462,7 @@ playing = true
 
 [node name="Camera2D" type="Camera2D" parent="NES"]
 position = Vector2( 129, -59 )
-zoom = Vector2( 0.45, 0.45 )
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="Jump" type="AudioStreamPlayer" parent="NES"]
 stream = ExtResource( 16 )
@@ -491,7 +493,7 @@ playing = true
 
 [node name="Camera2D" type="Camera2D" parent="SNES"]
 position = Vector2( 129, -59 )
-zoom = Vector2( 0.45, 0.45 )
+zoom = Vector2( 0.5, 0.5 )
 
 [node name="Jump" type="AudioStreamPlayer" parent="SNES"]
 stream = ExtResource( 19 )
@@ -521,8 +523,17 @@ animation = "Jump"
 frame = 13
 
 [node name="Camera2D" type="Camera2D" parent="N64"]
-position = Vector2( 213, -76 )
-zoom = Vector2( 0.8, 0.8 )
+position = Vector2( 260, -111 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="N64"]
+stream = ExtResource( 23 )
+volume_db = 1.0
+
+[node name="Pickup" type="AudioStreamPlayer" parent="N64"]
+stream = ExtResource( 24 )
+
+[node name="Hit" type="AudioStreamPlayer" parent="N64"]
+stream = ExtResource( 22 )
 
 [node name="PlayerHitbox" parent="." instance=ExtResource( 13 )]
 position = Vector2( -4, -4 )

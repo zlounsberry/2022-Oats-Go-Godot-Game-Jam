@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/8 bit theme2.ogg-85d992f473539a342bb6cb62d423e07f.oggstr"
+
+[deps]
+
+source_file="res://main/Level2/8 bit theme2.ogg"
+dest_files=[ "res://.import/8 bit theme2.ogg-85d992f473539a342bb6cb62d423e07f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

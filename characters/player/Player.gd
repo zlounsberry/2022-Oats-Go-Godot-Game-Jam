@@ -16,7 +16,7 @@ onready var can_dash:bool = true
 func _ready():
 	current_camera.current = true
 	sprite_anim.visible = true
-	current_UI.visible = true
+#	current_UI.visible = true
 	sprite_anim.play("Run")	
 
 # A lot of this borrowed from Kenney's platformer pack, slightly modified
