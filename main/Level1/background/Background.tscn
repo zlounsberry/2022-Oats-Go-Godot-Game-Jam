@@ -11,7 +11,7 @@ motion_mirroring = Vector2( 320, 0 )
 modulate = Color( 0.462745, 0.466667, 0.113725, 1 )
 margin_top = 83.0
 margin_right = 320.0
-margin_bottom = 243.0
+margin_bottom = 380.0
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayer"]
 position = Vector2( 160, 45 )

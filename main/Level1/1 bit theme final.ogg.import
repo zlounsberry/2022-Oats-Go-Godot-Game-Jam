@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/1 bit theme final.ogg-4516ac5c91c8f7148b802f106e7540dd.oggstr"
+
+[deps]
+
+source_file="res://main/Level1/1 bit theme final.ogg"
+dest_files=[ "res://.import/1 bit theme final.ogg-4516ac5c91c8f7148b802f106e7540dd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

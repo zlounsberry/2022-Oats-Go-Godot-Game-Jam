@@ -13,6 +13,10 @@ func _ready():
 	GlobalSettings.mushroom_counter = 1
 	GlobalSettings.hit_points = 5
 
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		$HBoxContainer/Start.grab_focus()
+
 func _on_Start_pressed():
 	animation_player.play("FadeBlack")
 	yield(animation_player, "animation_finished")
@@ -21,6 +25,7 @@ func _on_Start_pressed():
 	$Tween.start()
 	yield($Tween, "tween_completed")
 	$AudioStreamPlayer.stop()
+	animation_player.play("FadeOut")
 
 func _on_Credits_pressed():
 	animation_player.play("FadeBlack")

@@ -16,8 +16,10 @@ func _ready():
 func _spawn_player():
 	animationplayer.play("FadeIn")
 	yield(animationplayer, "animation_finished")
-	player.position = Vector2(0, low_y_position)
+	player.position = Vector2(10, low_y_position)
 	self.add_child(player)
 
 func _on_LevelUp_level_up():
+	GlobalSettings.moss_counter = GlobalSettings.plant_counter
+	GlobalSettings.plant_counter = 0
 	advance_level("res://main/Level2/Level2.tscn")

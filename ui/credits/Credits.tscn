@@ -14,32 +14,31 @@ margin_bottom = 360.0
 color = Color( 0.0784314, 0.14902, 0.415686, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 42.0
+margin_left = 37.0
 margin_top = 4.0
-margin_right = 578.0
+margin_right = 602.0
 margin_bottom = 362.0
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 536.0
-margin_bottom = 358.0
+margin_right = 565.0
+margin_bottom = 339.0
 theme = ExtResource( 2 )
 text = "Visual FX
 All artwork done for this jam by @YouCarryOats with help from the following:
 Blender 3.0 & add-ons: ML-Lab (anime male), node wrangler, sapling generator
 Converted from Blender 3.0 to 2D using PixelOver 0.10
 PolyHaven.com textures: wood_planks_grey, roof_slates_03, roof_tiles_14,
-rock_01, castle_wall_slates, brick_wall_001, brick_wall_003, plaster_grey_04
+rock_01, castle_wall_slates, brick_wall_001, brick_wall_003, plaster_grey_04,
+floor_bricks_02, dirt_aerial_03
 Kenney.nl: 2D Particles pack and lifted and modified some code from the platformer pack
 Color palette that clashes w/ textures is afr-32 from lospec.com
 Pixel art cleaned up in Aseprite
 
 Sound FX
-All sound effects and music generated for the jam (!!) by Dylan L
+All sound effects and music generated for the jam by Dylan L using Ableton & Waves Elements
 Music was converted from .wav to .ogg using FFMPEG
 
 Code
 Code was largely generated for the jam (w/ minor lifts from previous projects)
-Implemented in Godot 3.4.4 (go support their Patreon!)
-
-Links on main itch page! Thanks so much everyone!"
+Implemented in Godot 3.4.4 (go support their Patreon!)"
 align = 1

@@ -18,6 +18,9 @@ func _physics_process(delta):
 
 func drop_acorn():
 	movement_velocity = Vector2(0, 10)
+	if GlobalSettings.level == 3:
+		movement_velocity = Vector2(0, 25)
+		return
 	gravity = randi() % 8 + 4
 
 func _on_AcornHitbox_acorn_hit():

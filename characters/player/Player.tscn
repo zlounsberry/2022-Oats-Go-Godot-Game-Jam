@@ -405,7 +405,7 @@ collision_mask = 29
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
-position = Vector2( -5, -3 )
+visible = false
 shape = SubResource( 103 )
 
 [node name="1bit" type="Node2D" parent="."]
@@ -413,14 +413,14 @@ position = Vector2( -8, 8 )
 
 [node name="Sprite" type="AnimatedSprite" parent="1bit"]
 visible = false
-position = Vector2( 4, -12 )
+position = Vector2( 8, -8 )
 frames = SubResource( 1 )
 animation = "Jump"
 frame = 2
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="1bit"]
-position = Vector2( 73, -17 )
+position = Vector2( 75, -16 )
 zoom = Vector2( 0.25, 0.25 )
 
 [node name="ColorRect" type="ColorRect" parent="1bit"]
@@ -449,7 +449,7 @@ position = Vector2( -8, 8 )
 
 [node name="Sprite" type="AnimatedSprite" parent="NES"]
 visible = false
-position = Vector2( 1, -24 )
+position = Vector2( 8, -19 )
 frames = SubResource( 14 )
 animation = "Jump"
 frame = 4
@@ -476,7 +476,7 @@ position = Vector2( -8, 8 )
 
 [node name="Sprite" type="AnimatedSprite" parent="SNES"]
 visible = false
-position = Vector2( 7, -24 )
+position = Vector2( 8, -20 )
 frames = SubResource( 16 )
 animation = "Jump"
 frame = 9
@@ -503,7 +503,7 @@ position = Vector2( -8, 8 )
 
 [node name="Sprite" type="AnimatedSprite" parent="N64"]
 visible = false
-position = Vector2( 17, -40 )
+position = Vector2( 8, -22 )
 frames = SubResource( 18 )
 animation = "Jump"
 frame = 13
@@ -525,4 +525,3 @@ stream = ExtResource( 22 )
 bus = "SFX"
 
 [node name="PlayerHitbox" parent="." instance=ExtResource( 13 )]
-position = Vector2( -4, -4 )

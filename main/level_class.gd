@@ -21,23 +21,23 @@ onready var acorn_spawn_array:Array = []
 onready var position_array:Array =	[
 	[
 		3750,
-		100,
+		-32,
 		150,
 	],
 	[
-		3750,
-		100,
-		150,
+		6200,
+		-100,
+		175,
 	],
 	[
-		3750,
-		100,
-		150,
+		6200,
+		-100,
+		175,
 	],
 	[
-		3750,
-		100,
-		150,
+		14000,
+		-100,
+		445,
 	],
 ]
 	
@@ -98,12 +98,15 @@ func spawn_plants(Player:Object, Plant:Object, min_x_position:int, max_x_positio
 			plant_array.append(plant_position)
 
 func create_acorn_spawn_sites(Acorn_spawn_hitbox:Object, Acorn:Object, max_x_position:int):
-	for acorn_spawns in range(1, 30):
+	for acorn_spawns in range(1, 25):
 		randomize()
 		var spawn_point_position = Vector2(randi() % max_x_position, low_y_position)
 		if not acorn_spawn_array.has(spawn_point_position):
 			var acorn = Acorn.instance()
-			acorn.position = Vector2(spawn_point_position.x + (randi() % 125 + 75), 0)
+			if GlobalSettings.level == 3:
+				acorn.position = Vector2(spawn_point_position.x + (randi() % 225 + 75), high_y_position)
+			else:
+				acorn.position = Vector2(spawn_point_position.x + (randi() % 125 + 75), high_y_position)
 			acorn.connect("acorn_hit", self, "player_hit", [player])
 			self.add_child(acorn)
 			var acorn_spawn = Acorn_spawn_hitbox.instance()

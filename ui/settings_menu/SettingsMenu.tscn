@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/settings_menu/SettingsMenu.gd" type="Script" id=1]
+[ext_resource path="res://ui/main_menu/MainMenu.tres" type="Theme" id=2]
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
@@ -11,3 +12,82 @@ script = ExtResource( 1 )
 margin_right = 641.0
 margin_bottom = 361.0
 color = Color( 0.207843, 0.184314, 0.180392, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 200.0
+margin_top = 291.0
+margin_right = 450.0
+margin_bottom = 327.0
+
+[node name="Text" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 36.0
+margin_bottom = 36.0
+
+[node name="Sound" type="Label" parent="HBoxContainer/Text"]
+margin_right = 36.0
+margin_bottom = 16.0
+theme = ExtResource( 2 )
+text = "SFX"
+align = 2
+
+[node name="Music" type="Label" parent="HBoxContainer/Text"]
+margin_top = 20.0
+margin_right = 36.0
+margin_bottom = 36.0
+theme = ExtResource( 2 )
+text = "Music"
+align = 2
+
+[node name="Sliders" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 40.0
+margin_right = 240.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Sound" type="HSlider" parent="HBoxContainer/Sliders"]
+margin_right = 200.0
+margin_bottom = 16.0
+focus_neighbour_top = NodePath("../Music")
+focus_neighbour_bottom = NodePath("../Music")
+focus_next = NodePath("../Music")
+focus_previous = NodePath("../Music")
+theme = ExtResource( 2 )
+min_value = -20.0
+max_value = 10.0
+
+[node name="Music" type="HSlider" parent="HBoxContainer/Sliders"]
+margin_top = 20.0
+margin_right = 200.0
+margin_bottom = 36.0
+focus_neighbour_top = NodePath("../Sound")
+focus_neighbour_bottom = NodePath("../Sound")
+focus_next = NodePath("../Sound")
+focus_previous = NodePath("../Sound")
+theme = ExtResource( 2 )
+min_value = -20.0
+max_value = 10.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 3.0
+margin_top = 4.0
+margin_right = 643.0
+margin_bottom = 172.0
+theme = ExtResource( 2 )
+text = "Controls:
+Dash: A, left arrow, Enter, Xbox B
+Jump: D, right arrow, Space, Xbox A
+Pause: Start, Esc
+While Paused, back to main menu: F6, Xbox select
+(Caution going back to menu will erase current progress)
+
+How to Play:
+You are an urban forager, dashing through a changing environment to collect plants for soup.
+Collect as many plants as you can for the best soup you can make!
+Collect mushrooms for a boost of energy! You can only dash while you have mushrooms to eat.
+Watch for falling acorns! Get hit too many times and you have to start the level over
+Finally, sometimes plants grow in unreachable places. That's okay, it's part of urban foraging!
+Simply focus on the plants and mushrooms that are within your reach."
+align = 1
+
+[connection signal="value_changed" from="HBoxContainer/Sliders/Sound" to="." method="_on_Sound_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/Sliders/Music" to="." method="_on_Music_value_changed"]

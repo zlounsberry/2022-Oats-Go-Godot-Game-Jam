@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://main/Level4/Level4.gd" type="Script" id=1]
 [ext_resource path="res://main/Level4/background/Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://main/Level1/tilemap/Tilemap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/Level4/64 bit theme.ogg" type="AudioStream" id=4]
+[ext_resource path="res://hitboxes/level_up/LevelUpHitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/Level4/64 bit theme final.ogg" type="AudioStream" id=4]
+[ext_resource path="res://main/Level4/tilemap/Tilemap.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeIn"
@@ -57,8 +58,8 @@ script = ExtResource( 1 )
 
 [node name="N64" parent="." instance=ExtResource( 2 )]
 
-[node name="1bit" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 297 )
+[node name="N65" parent="." instance=ExtResource( 5 )]
+position = Vector2( 0, 139 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
@@ -72,9 +73,19 @@ anims/FadeOut = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-margin_left = -14.0
-margin_top = -123.0
-margin_right = 5992.0
-margin_bottom = 608.0
+margin_left = -8.0
+margin_top = -309.0
+margin_right = 19992.0
+margin_bottom = 691.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="LevelUp" parent="." instance=ExtResource( 3 )]
+position = Vector2( 15001, 432 )
+scale = Vector2( 2, 2 )
+
+[node name="LevelUp2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 17922, 430 )
+scale = Vector2( 2, 2 )
+
+[connection signal="level_up" from="LevelUp" to="." method="_on_LevelUp_level_up"]
+[connection signal="level_up" from="LevelUp2" to="." method="_on_LevelUp_level_up"]

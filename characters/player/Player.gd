@@ -5,9 +5,36 @@ onready var ui:Object = UI.instance()
 
 onready var node_array:Array = ["1bit","NES","SNES","N64"]
 onready var move_speed_array:Array = [0, 1, 1, 2]
-onready var jump_multiplier_array:Array = [18, 24, 24, 32]
 onready var ui_position_array:Array = [Vector2(-25, -65),Vector2(-45, -125),Vector2(-45, -125),Vector2(-55, -225)]
-onready var jump_power = jump_multiplier_array[GlobalSettings.level]
+
+onready var jump_multiplier_array:Array = [18, 30, 30, 70]
+onready var jump_power:int = jump_multiplier_array[GlobalSettings.level]
+
+onready var gravity_multiplier_array:Array = [10, 15, 15, 50]
+onready var gravity_power:int = gravity_multiplier_array[GlobalSettings.level]
+
+onready var hitbox_size_array:Array = [
+	[
+		Vector2(2,2),
+		Vector2(0, 0),
+		Vector2(1, 1),
+	],
+	[
+		Vector2(4, 4),
+		Vector2(0, 1),
+		Vector2(1.5, 2),
+	],
+	[
+		Vector2(4, 6),
+		Vector2(0, 2),
+		Vector2(1.5, 2.25),
+	],
+	[
+		Vector2(8, 14),
+		Vector2(0, 4),
+		Vector2(3, 4),
+	],
+]
 
 onready var current_node:String = node_array[GlobalSettings.level]
 onready var sprite_anim:Node = get_node(str(current_node, "/Sprite"))
@@ -23,15 +50,15 @@ onready var coyote_jump:bool = true
 onready var has_health = true
 
 func _ready():
+	generate_collision_shape()
+	resize_player_hitbox()
 	ui.rect_position = ui_position_array[GlobalSettings.level]
 	add_child(ui)
 	current_camera.current = true
 	sprite_anim.visible = true
-#	current_UI.visible = true
 	sprite_anim.play("Run")	
 
 # A lot of this borrowed from Kenney's platformer pack, slightly modified
-export var gravityPower = 10
 # Private
 var velocity = Vector2(0, 0)
 var movement_velocity = Vector2(0, 0)
@@ -47,7 +74,7 @@ func _physics_process(delta):
 
 		# Apply movement
 		velocity = velocity.linear_interpolate(movement_velocity * 10, delta * 15)
-		move_and_slide(velocity + Vector2(0, gravity), Vector2(0, -1))
+		move_and_slide(velocity + Vector2(0, gravity), Vector2(0, -3))
 
 # Player controls
 func applyControls():
@@ -77,7 +104,7 @@ func applyControls():
 # Apply gravity and jumping
 func applyGravity():
 	if gravity <= 100:
-		gravity += gravityPower
+		gravity += gravity_power
 	
 func jump(multiplier):
 	coyote_time()
@@ -123,3 +150,16 @@ func return_to_base_speed():
 func coyote_time():
 	yield(get_tree().create_timer(0.1), "timeout")
 	coyote_jump = false
+
+func generate_collision_shape():
+	var shape = CapsuleShape2D.new()
+	var collision_shape = CollisionShape2D.new()
+	shape.set_radius(hitbox_size_array[GlobalSettings.level][0][0])
+	shape.set_height(hitbox_size_array[GlobalSettings.level][0][1])
+	collision_shape.add_to_group("player")
+	collision_shape.set_shape(shape)
+	collision_shape.position = hitbox_size_array[GlobalSettings.level][1]
+	add_child(collision_shape)
+
+func resize_player_hitbox():
+	get_node("PlayerHitbox").scale = hitbox_size_array[GlobalSettings.level][2]
