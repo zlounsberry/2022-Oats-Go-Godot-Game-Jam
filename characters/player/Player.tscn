@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=2]
+[gd_scene load_steps=108 format=2]
 
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/1bit_run.png" type="Texture" id=2]
@@ -19,8 +19,6 @@
 [ext_resource path="res://characters/player/16 bit hit.ogg" type="AudioStream" id=17]
 [ext_resource path="res://characters/player/16 bit pickup.ogg" type="AudioStream" id=18]
 [ext_resource path="res://characters/player/16 bit jump.ogg" type="AudioStream" id=19]
-[ext_resource path="res://ui/on_screen_ui/1bitOnScreenUI.tscn" type="PackedScene" id=20]
-[ext_resource path="res://ui/on_screen_ui/NESOnScreenUI.tscn" type="PackedScene" id=21]
 [ext_resource path="res://characters/player/64 bit hit.ogg" type="AudioStream" id=22]
 [ext_resource path="res://characters/player/64 bit jump.ogg" type="AudioStream" id=23]
 [ext_resource path="res://characters/player/64 bit pickup.ogg" type="AudioStream" id=24]
@@ -443,12 +441,6 @@ stream = ExtResource( 11 )
 [node name="Hit" type="AudioStreamPlayer" parent="1bit"]
 stream = ExtResource( 12 )
 
-[node name="UI" parent="1bit" instance=ExtResource( 20 )]
-margin_left = -14.0
-margin_top = -85.0
-margin_right = -14.0
-margin_bottom = -85.0
-
 [node name="NES" type="Node2D" parent="."]
 position = Vector2( -8, 8 )
 
@@ -472,13 +464,6 @@ stream = ExtResource( 14 )
 
 [node name="Hit" type="AudioStreamPlayer" parent="NES"]
 stream = ExtResource( 15 )
-
-[node name="UI" parent="NES" instance=ExtResource( 21 )]
-visible = false
-margin_left = -14.0
-margin_top = -139.0
-margin_right = -14.0
-margin_bottom = -139.0
 
 [node name="SNES" type="Node2D" parent="."]
 position = Vector2( -8, 8 )
@@ -505,13 +490,6 @@ stream = ExtResource( 18 )
 [node name="Hit" type="AudioStreamPlayer" parent="SNES"]
 stream = ExtResource( 17 )
 
-[node name="UI" parent="SNES" instance=ExtResource( 21 )]
-visible = false
-margin_left = -14.0
-margin_top = -139.0
-margin_right = -14.0
-margin_bottom = -139.0
-
 [node name="N64" type="Node2D" parent="."]
 position = Vector2( -8, 8 )
 
@@ -537,9 +515,3 @@ stream = ExtResource( 22 )
 
 [node name="PlayerHitbox" parent="." instance=ExtResource( 13 )]
 position = Vector2( -4, -4 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -95.0
-margin_top = -220.0
-margin_right = 191.0
-margin_bottom = -210.0

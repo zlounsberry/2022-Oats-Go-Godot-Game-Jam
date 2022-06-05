@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/on_screen_ui/OnScreenUI.gd" type="Script" id=1]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/separation = 8
+
+[node name="HPHBox" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 600.0
+rect_min_size = Vector2( 600, 0 )
+custom_constants/separation = 8
+
+[node name="MushroomHBox" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 8.0
+margin_right = 600.0
+margin_bottom = 8.0
+rect_min_size = Vector2( 600, 0 )
+custom_constants/separation = 8
+
+[node name="Timer" type="Label" parent="VBoxContainer"]
+margin_top = 16.0
+margin_right = 600.0
+margin_bottom = 30.0

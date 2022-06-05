@@ -104,11 +104,11 @@ func play_player_pickup_sound(player:Object):
 	player.play_pickup_sound() 
 
 func player_hit(player:Object):
-	player.play_hit_sound()
 	GlobalSettings.hit_points -= 1
+	player.play_hit_sound()
 	if GlobalSettings.hit_points <=0:
 		restart_level(player)
-		
+
 func restart_level(player:Object):
 	player.has_health = false
 	animationplayer.play("FadeOut")
@@ -116,3 +116,9 @@ func restart_level(player:Object):
 	GlobalSettings.plant_counter = current_plant_count
 	GlobalSettings.mushroom_counter = current_mushroom_count
 	get_tree().reload_current_scene()
+	
+func advance_level(input_level):
+	# Shh I know I didn't type it it's release day
+	animationplayer.play("FadeOut")
+	yield(animationplayer, "animation_finished")
+	get_tree().change_scene(input_level)

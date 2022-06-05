@@ -1,8 +1,12 @@
 extends KinematicBody2D
 
+onready var UI:Object = load("res://ui/on_screen_ui/OnScreenUI.tscn")
+onready var ui:Object = UI.instance()
+
 onready var node_array:Array = ["1bit","NES","SNES","N64"]
 onready var move_speed_array:Array = [0, 1, 1, 2]
 onready var jump_multiplier_array:Array = [18, 24, 24, 32]
+onready var ui_position_array:Array = [Vector2(-25, -65),Vector2(-45, -125),Vector2(-45, -125),Vector2(-55, -225)]
 onready var jump_power = jump_multiplier_array[GlobalSettings.level]
 
 onready var current_node:String = node_array[GlobalSettings.level]
@@ -15,9 +19,12 @@ onready var current_UI:Node = get_node(str(current_node, "/UI"))
 onready var movement_speed:int = 5 * (move_speed_array[GlobalSettings.level] + 1)
 onready var base_move_speed:int = movement_speed
 onready var can_dash:bool = true
+onready var coyote_jump:bool = true
 onready var has_health = true
 
 func _ready():
+	ui.rect_position = ui_position_array[GlobalSettings.level]
+	add_child(ui)
 	current_camera.current = true
 	sprite_anim.visible = true
 #	current_UI.visible = true
@@ -47,8 +54,12 @@ func applyControls():
 	movement_velocity = Vector2(0, 0)
 	movement_velocity.x = movement_speed
 
+	if is_on_floor():
+		coyote_jump = true
+		pass
+
 	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
+		if coyote_jump:
 			jump(1)
 			current_jump_sound.pitch_scale = 1
 			doubleJump = true
@@ -69,6 +80,7 @@ func applyGravity():
 		gravity += gravityPower
 	
 func jump(multiplier):
+	coyote_time()
 	gravity = -jump_power * multiplier * 10
 	sprite_anim.play("Jump")
 
@@ -84,6 +96,7 @@ func dash(multiplier):
 	timer.connect("timeout", self, "return_to_base_speed")
 	add_child(timer)
 	timer.start()
+	ui.populate_on_screen()
 
 # Set animations
 func applyAnimation():
@@ -94,12 +107,19 @@ func applyAnimation():
 	if not is_on_floor():
 		sprite_anim.play("Jump")
 
+# Game jam problems, these functions are poorly named but c'est la jank
 func play_pickup_sound():
+	ui.populate_on_screen()
 	current_pickup_sound.play()
 
 func play_hit_sound():
+	ui.populate_on_screen()
 	current_hit_sound.play()
 
 func return_to_base_speed():
 	movement_velocity.x = base_move_speed
 	can_dash = true
+
+func coyote_time():
+	yield(get_tree().create_timer(0.1), "timeout")
+	coyote_jump = false
