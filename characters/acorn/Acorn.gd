@@ -26,6 +26,5 @@ func _on_AcornHitbox_acorn_hit():
 	print ("acorn hit from acorn script")
 
 func _on_AcornWorldHitbox_acorn_hit_ground():
-	print('stopping_play')
 	get_node(str("Audio/", node_array[GlobalSettings.level])).play()
 	sprite_anim.playing = false

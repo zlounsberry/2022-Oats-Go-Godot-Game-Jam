@@ -4,6 +4,10 @@ class_name Level
 onready var Player:Object = load("res://characters/player/Player.tscn")
 # Borrowing this for sound lol
 onready var player:Object = Player.instance()
+
+onready var Pause:Object = load("res://ui/pause/Pause.tscn")
+# Borrowing this for sound lol
+
 onready var current_plant_count:int = GlobalSettings.plant_counter
 onready var current_mushroom_count:int = GlobalSettings.mushroom_counter
 
@@ -43,10 +47,18 @@ onready var low_y_position:int = position_array[GlobalSettings.level][2]
 
 func _ready():
 	# todo change to 5
+	get_tree().paused = false
 	GlobalSettings.hit_points = 5
 
+func _input(event):
+	if event.is_action_pressed("pause"):
+		var pause:Object = Pause.instance()
+		print('pause')
+		pause.rect_position = Vector2(-50,-50)
+		add_child(pause)
+
 func spawn_mushrooms(Player:Object, Mushroom:Object, min_x_position:int, max_x_position:int):
-	for high_mushrooms in range(1, 4):
+	for high_mushrooms in range(1, 15):
 		randomize()
 		var mushroom_position:Vector2 = Vector2(randi() % max_x_position, high_y_position)
 		if not mushroom_array.has(mushroom_position):
@@ -55,7 +67,7 @@ func spawn_mushrooms(Player:Object, Mushroom:Object, min_x_position:int, max_x_p
 			mushroom.connect("picked_up", self, "play_player_pickup_sound", [Player])
 			self.add_child(mushroom)
 			mushroom_array.append(mushroom_position)
-	for low_mushrooms in range(1, 1):
+	for low_mushrooms in range(1, 5):
 		randomize()
 		var mushroom_position = Vector2(randi() % max_x_position, low_y_position)
 		if not mushroom_array.has(mushroom_position):
@@ -66,7 +78,7 @@ func spawn_mushrooms(Player:Object, Mushroom:Object, min_x_position:int, max_x_p
 			plant_array.append(mushroom_position)
 
 func spawn_plants(Player:Object, Plant:Object, min_x_position:int, max_x_position:int):
-	for high_plants in range(1, 8):
+	for high_plants in range(1, 24):
 		randomize()
 		var plant_position = Vector2(randi() % max_x_position, high_y_position)
 		if not plant_array.has(plant_position):
@@ -75,7 +87,7 @@ func spawn_plants(Player:Object, Plant:Object, min_x_position:int, max_x_positio
 			plant.connect("picked_up", self, "play_player_pickup_sound", [Player])
 			self.add_child(plant)
 			plant_array.append(plant_position)
-	for low_plants in range(1, 2):
+	for low_plants in range(1, 8):
 		randomize()
 		var plant_position = Vector2(randi() % max_x_position, low_y_position)
 		if not plant_array.has(plant_position):
@@ -118,7 +130,7 @@ func restart_level(player:Object):
 	get_tree().reload_current_scene()
 	
 func advance_level(input_level):
-	# Shh I know I didn't type it it's release day
+	GlobalSettings.level += 1
 	animationplayer.play("FadeOut")
 	yield(animationplayer, "animation_finished")
 	get_tree().change_scene(input_level)
