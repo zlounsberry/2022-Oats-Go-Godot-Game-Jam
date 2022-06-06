@@ -488,14 +488,17 @@ zoom = Vector2( 0.5, 0.5 )
 
 [node name="Jump" type="AudioStreamPlayer" parent="SNES"]
 stream = ExtResource( 19 )
+volume_db = 10.0
 bus = "SFX"
 
 [node name="Pickup" type="AudioStreamPlayer" parent="SNES"]
 stream = ExtResource( 18 )
+volume_db = 5.0
 bus = "SFX"
 
 [node name="Hit" type="AudioStreamPlayer" parent="SNES"]
 stream = ExtResource( 17 )
+volume_db = 10.0
 bus = "SFX"
 
 [node name="N64" type="Node2D" parent="."]
@@ -513,15 +516,17 @@ position = Vector2( 260, -63 )
 
 [node name="Jump" type="AudioStreamPlayer" parent="N64"]
 stream = ExtResource( 23 )
-volume_db = 1.0
+volume_db = 10.0
 bus = "SFX"
 
 [node name="Pickup" type="AudioStreamPlayer" parent="N64"]
 stream = ExtResource( 24 )
+volume_db = 5.0
 bus = "SFX"
 
 [node name="Hit" type="AudioStreamPlayer" parent="N64"]
 stream = ExtResource( 22 )
+volume_db = 15.0
 bus = "SFX"
 
 [node name="PlayerHitbox" parent="." instance=ExtResource( 13 )]

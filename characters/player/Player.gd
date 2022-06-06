@@ -7,10 +7,10 @@ onready var node_array:Array = ["1bit","NES","SNES","N64"]
 onready var move_speed_array:Array = [0, 1, 1, 2]
 onready var ui_position_array:Array = [Vector2(-25, -65),Vector2(-45, -125),Vector2(-45, -125),Vector2(-55, -225)]
 
-onready var jump_multiplier_array:Array = [18, 30, 30, 70]
+onready var jump_multiplier_array:Array = [18, 18, 14, 18]
 onready var jump_power:int = jump_multiplier_array[GlobalSettings.level]
 
-onready var gravity_multiplier_array:Array = [10, 15, 15, 50]
+onready var gravity_multiplier_array:Array = [10, 10, 7, 10]
 onready var gravity_power:int = gravity_multiplier_array[GlobalSettings.level]
 
 onready var hitbox_size_array:Array = [
@@ -74,7 +74,7 @@ func _physics_process(delta):
 
 		# Apply movement
 		velocity = velocity.linear_interpolate(movement_velocity * 10, delta * 15)
-		move_and_slide(velocity + Vector2(0, gravity), Vector2(0, -3))
+		move_and_slide(velocity + Vector2(0, gravity * (GlobalSettings.level + 1)), Vector2(0, -30))
 
 # Player controls
 func applyControls():
@@ -114,7 +114,6 @@ func jump(multiplier):
 func dash(multiplier):
 	# Make this satisfying, just fast for now
 	can_dash = false
-	print("dashing")
 	movement_velocity.x = base_move_speed * multiplier
 	GlobalSettings.mushroom_counter -= 1
 	var timer = Timer.new()

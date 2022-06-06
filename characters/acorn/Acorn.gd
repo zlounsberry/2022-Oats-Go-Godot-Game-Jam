@@ -18,6 +18,9 @@ func _physics_process(delta):
 
 func drop_acorn():
 	movement_velocity = Vector2(0, 10)
+	if GlobalSettings.level == 2:
+		movement_velocity = Vector2(0, 16)
+		return
 	if GlobalSettings.level == 3:
 		movement_velocity = Vector2(0, 25)
 		return
@@ -26,7 +29,6 @@ func drop_acorn():
 func _on_AcornHitbox_acorn_hit():
 	emit_signal("acorn_hit")
 	self.queue_free()
-	print ("acorn hit from acorn script")
 
 func _on_AcornWorldHitbox_acorn_hit_ground():
 	get_node(str("Audio/", node_array[GlobalSettings.level])).play()

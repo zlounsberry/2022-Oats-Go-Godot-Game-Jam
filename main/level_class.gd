@@ -49,11 +49,16 @@ func _ready():
 	# todo change to 5
 	get_tree().paused = false
 	GlobalSettings.hit_points = 5
+	var timer = Timer.new()
+	timer.set_wait_time(1)
+	timer.one_shot = false
+	timer.connect("timeout", self, "update_clock")
+	add_child(timer)
+	timer.start()
 
 func _input(event):
 	if event.is_action_pressed("pause"):
 		var pause:Object = Pause.instance()
-		print('pause')
 		pause.rect_position = Vector2(-50,-50)
 		add_child(pause)
 
@@ -137,3 +142,13 @@ func advance_level(input_level):
 	animationplayer.play("FadeOut")
 	yield(animationplayer, "animation_finished")
 	get_tree().change_scene(input_level)
+
+func update_clock():
+	GlobalSettings.seconds += 1
+	if GlobalSettings.seconds >= 60:
+		GlobalSettings.minutes += 1
+		GlobalSettings.seconds = 0
+	if GlobalSettings.seconds >= 10:
+		GlobalSettings.seconds_text = str(GlobalSettings.seconds)
+	else:
+		GlobalSettings.seconds_text = str("0", GlobalSettings.seconds)

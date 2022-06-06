@@ -72,7 +72,7 @@ corner_radius_bottom_left = 5
 corner_detail = 10
 
 [sub_resource type="DynamicFont" id=10]
-size = 12
+size = 11
 font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]

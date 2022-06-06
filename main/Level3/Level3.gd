@@ -15,7 +15,7 @@ func _ready():
 func _spawn_player():
 	animationplayer.play("FadeIn")
 	yield(animationplayer, "animation_finished")
-	player.position = Vector2(40, low_y_position)
+	player.position = Vector2(80, low_y_position)
 	self.add_child(player)
 
 func _on_LevelUp_level_up():

@@ -8,6 +8,7 @@ func _process(delta):
 	$VBoxContainer/ginkgo.text = str("Gymnosperms (ginkgo) foraged: ", GlobalSettings.ginkgo_counter)
 	$VBoxContainer/lemon.text = str("Angiosperms (lemons) foraged: ", GlobalSettings.lemon_counter)
 	$VBoxContainer/total.text = str("Total soup ingredients: ", total_score)
+	$VBoxContainer/total.text = str("And it only took ", str(GlobalSettings.minutes), "m, ", GlobalSettings.seconds_text, "s!")
 
 func _input(event):
 	if event.is_action_pressed("pause"):

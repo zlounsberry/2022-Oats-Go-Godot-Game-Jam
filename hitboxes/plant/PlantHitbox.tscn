@@ -16,4 +16,3 @@ modulate = Color( 0.0313726, 1, 0, 1 )
 shape = SubResource( 1 )
 
 [connection signal="area_entered" from="." to="." method="_on_PlantHitbox_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_PlantHitbox_body_entered"]

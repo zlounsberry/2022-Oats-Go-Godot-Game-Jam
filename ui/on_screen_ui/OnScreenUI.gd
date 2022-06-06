@@ -14,7 +14,6 @@ func _ready():
 	populate_grid(mushroom_hbox, Mushroom, GlobalSettings.mushroom_counter)
 
 func populate_on_screen():
-	print("populating on screen")
 	populate_grid(hp_hbox, HP, GlobalSettings.hit_points)
 	populate_grid(mushroom_hbox, Mushroom, GlobalSettings.mushroom_counter)
 
